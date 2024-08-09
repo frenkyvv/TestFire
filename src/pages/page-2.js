@@ -18,6 +18,7 @@ const obtenerJugadores = async () => {
     const jugadoresData = jugadoresDocs.docs.map(doc => ({
       id: doc.id,
       ...doc.data(),
+      
     }))
     return jugadoresData
     
@@ -43,6 +44,7 @@ function SecondPage() {
         saldo: saldo 
       })
       handleObtenerJugadores()
+      console.log(nombre)
     } catch (error) {
       console.error(error)
     }
