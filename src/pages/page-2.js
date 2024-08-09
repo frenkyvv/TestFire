@@ -7,13 +7,16 @@ import Button from 'react-bootstrap/Button'
 import styled from "styled-components"
 import "bootstrap/dist/css/bootstrap.css"
 import { FirebaseContext } from '../utils/firebase';
-import fstore from "../utils/firebase"
+import { getFirestore } from "../utils/firebase"
 import { collection, getDocs, addDoc } from "firebase/firestore"
+
+const db = getFirestore(fstore)
 
 const obtenerJugadores = async () => {
   const fstore = React.useContext(FirebaseContext);
+  
   try {
-    const jugadoresRef = collection(fstore, "jugadores")
+    const jugadoresRef = collection(db, "jugadores")
     const jugadoresDocs = await getDocs(jugadoresRef)
     const jugadoresData = jugadoresDocs.docs.map(doc => ({
       id: doc.id,
