@@ -10,11 +10,11 @@ import { FirebaseContext } from '../utils/firebase';
 import { getFirestore } from "../utils/firebase"
 import { collection, getDocs, addDoc } from "firebase/firestore"
 
-const db = getFirestore(fstore)
+
 
 const obtenerJugadores = async () => {
   const fstore = React.useContext(FirebaseContext);
-  
+  const db = getFirestore(fstore)
   try {
     const jugadoresRef = collection(db, "jugadores")
     const jugadoresDocs = await getDocs(jugadoresRef)
