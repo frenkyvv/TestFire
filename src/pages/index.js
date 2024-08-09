@@ -8,19 +8,19 @@ function IndexPage() {
   return (
     <Layout>
       <Seo title="Home" />
-      <Container>
+      <MainContainer>
       <img src="/images/logos/logo.svg" alt="logo" />
       <h1>Hi people</h1>
       <p>Welcome to your new Gatsby site.</p>
       <Link to="/page-2/">Go to page 2</Link> <br />
-      </Container>
+      </MainContainer>
     </Layout>
   )
 }
 
 export default IndexPage
 
-const Container = styled.div`
+const MainContainer = styled.div`
   display: flex;
   flex-direction: column;
   justify-content: center;
