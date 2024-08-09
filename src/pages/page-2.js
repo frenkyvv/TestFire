@@ -13,8 +13,6 @@ import { collection, getDocs, addDoc } from "firebase/firestore"
 
 
 const obtenerJugadores = async () => {
-  const fstore = React.useContext(FirebaseContext);
-  const db = getFirestore(fstore)
   try {
     const jugadoresRef = collection(db, "jugadores")
     const jugadoresDocs = await getDocs(jugadoresRef)
@@ -33,6 +31,7 @@ const obtenerJugadores = async () => {
 function SecondPage() {
   const fstore = React.useContext(FirebaseContext);
   const db = getFirestore(fstore);
+
   const [jugadores, setJugadores] = useState([])
   const [nombre, setNombre] = useState('')
   const [saldo, setSaldo] = useState(0)
@@ -41,6 +40,7 @@ function SecondPage() {
     const jugadoresData = await obtenerJugadores()
     setJugadores(jugadoresData)
   }
+
   const handleAgregarJugador = async () => {
     try {
       const jugadoresRef = collection(db, "jugadores")
