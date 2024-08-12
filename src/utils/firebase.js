@@ -1,5 +1,5 @@
 import { initializeApp } from "firebase/app";
-import { getFirestore } from "firebase/firestore";
+import { getFirestore as getFirebaseFirestore } from 'firebase/firestore';
 import React from 'react';
 
 const firebaseConfig = process.env.NODE_ENV === 'production' ? null : {
@@ -15,13 +15,13 @@ const FirebaseContext = React.createContext(null);
 
 const FirebaseProvider = ({ children }) => {
   const firebase = firebaseConfig ? initializeApp(firebaseConfig) : null;
-  const fstore = firebase ? getFirestore(firebase) : null;
+  const fstore = firebase ? getFirebaseFirestore(firebase) : null;
 
   return (
-    <FirebaseContext.Provider value={fstore}>
+    <FirebaseContext.Provider value={{ fstore, getFirestore: getFirebaseFirestore }}>
       {children}
     </FirebaseContext.Provider>
   );
 };
 
-export { FirebaseProvider, FirebaseContext };
+export { FirebaseProvider, FirebaseContext, getFirebaseFirestore as getFirestore };
